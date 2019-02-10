@@ -1,15 +1,14 @@
 import React from 'react';
 import LoginForm from '../../components/Login';
-import { Row, Col } from 'antd';
+import { Row, Col, Card } from 'antd';
 
 const LoginPage = () => {
   return (
-    <Row type="flex" justify="center" align="middle" style={{marginTop: '25%'}}>
-      <Col span={24}>
-        <h1 className="login-title">React todo app</h1>
-      </Col>
+    <Row type="flex" justify="center" align="middle" style={{marginTop: '15%'}}>
       <Col xs={24} sm={12} md={12} lg={12}>
-        <LoginForm/>
+        <Card title="React todo app Log in">
+          <LoginForm/>
+        </Card>
       </Col>
     </Row>
   )
