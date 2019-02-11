@@ -27,7 +27,7 @@ module.exports = {
         url: 'sqlite://' + dbPath,
         dialect: 'sqlite',
         storage: dbPath,
-        logging: msg => console.log('[SEQUELIZE]', msg),
+        logging: msg => console.log('[SEQUELIZE]', msg, '\n'),
         define: {
             underscored: true,
             freezeTableName: false,

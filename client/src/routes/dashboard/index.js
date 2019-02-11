@@ -1,5 +1,11 @@
 import React from 'react';
+import Dashboard from './Dashboard';
+import Layout from '../../components/Layout';
 
-const Dashboard = () => <h1>'DashBoard'</h1>;
+const DashboardPage = () => (
+  <Layout>
+    <Dashboard/>
+  </Layout>
+);
 
-export default Dashboard;
+export default DashboardPage;

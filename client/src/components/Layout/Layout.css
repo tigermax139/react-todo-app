@@ -1,0 +1,39 @@
+.trigger {
+    font-size: 18px;
+    line-height: 64px;
+    padding: 0 24px;
+    cursor: pointer;
+    transition: color .3s;
+}
+
+.trigger:hover {
+    color: #1890ff;
+}
+
+.layout .header {
+    background-color: #ffffff;
+    padding: 0;
+}
+
+.layout .footer {
+    text-align: center;
+}
+
+.content {
+    margin: 24px 16px;
+    padding: 24px;
+    background: #ffffff;
+    min-height: 280px;
+    height: calc(100vh - (69px + 24px * 4 + 17px));
+}
+
+.logo-wrapper {
+    text-align: center;
+    margin: 0 auto;
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.nav-link {
+    color: #ffffff;
+}

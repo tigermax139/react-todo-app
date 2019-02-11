@@ -1,5 +1,7 @@
 import React from 'react';
+import User from './User';
+import Layout from '../../components/Layout';
 
-const User = () => <h1>'User'</h1>;
+const UserPage = () => <Layout><User/></Layout>
 
-export default User;
+export default UserPage;
