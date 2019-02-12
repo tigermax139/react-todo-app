@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { Link, withRouter } from "react-router-dom";
-
-import { Layout, Menu, Icon } from 'antd';
+import { logout } from "../../../controllers/auth";
+import { Layout, Menu, Icon, Divider } from 'antd';
 import Logo from '../../../logo.svg'
 const { Sider } = Layout;
 
@@ -32,6 +33,10 @@ class Navigation extends Component {
             <span> User Info</span>
             <Link to='/user'/>
           </Menu.Item>
+          <Menu.Item onClick={this.props.logout}>
+            <Icon type="logout" />
+            <span> Logout </span>
+          </Menu.Item>
         </Menu>
       </Sider>
     );
@@ -41,10 +46,11 @@ class Navigation extends Component {
 Navigation.propTypes = {
   collapsed: PropTypes.bool,
   location: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 Navigation.defaultProps = {
   collapsed: false,
 };
 
-export default withRouter(Navigation);
+export default withRouter(connect(null, { logout })(Navigation));

@@ -15,11 +15,11 @@ class Main extends Component {
   render() {
     return (
       <Switch>
-        <ProtectedRoute exact path={'/'} component={withRouter(Dashboard)}/>
-        <ProtectedRoute path={'/user'} component={withRouter(User)}/>
-        <Route path={'/login'} component={withRouter(Login)}/>
-        <Route path={'/sing-up'} component={withRouter(SignUp)}/>
-        <ProtectedRoute path={'*'} component={withRouter(NotFound)}/>
+        <ProtectedRoute exact path={'/'} component={Dashboard}/>
+        <ProtectedRoute path={'/user'} component={User}/>
+        <Route path={'/login'} component={Login}/>
+        <Route path={'/sing-up'} component={SignUp}/>
+        <ProtectedRoute path={'*'} component={NotFound}/>
       </Switch>
     );
   }

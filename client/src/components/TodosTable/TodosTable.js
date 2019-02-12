@@ -60,7 +60,7 @@ class TodosTable extends Component {
         )
       }
     ];
-    return <Table columns={columns} dataSource={source}/>
+    return <Table pagination={this.props.pagination} onChange={this.props.onPageChange} columns={columns} dataSource={source}/>
   }
 }
 
@@ -68,6 +68,8 @@ TodosTable.propTypes = {
   todos: PropTypes.array.isRequired,
   onEdit: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
+  pagination: PropTypes.object.isRequired,
+  onPageChange: PropTypes.func.isRequired,
 };
 
 export default TodosTable;

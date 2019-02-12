@@ -19,12 +19,11 @@
     text-align: center;
 }
 
-.content {
+.layout .content {
     margin: 24px 16px;
     padding: 24px;
     background: #ffffff;
-    min-height: 280px;
-    height: calc(100vh - (69px + 24px * 4 + 17px));
+    min-height: calc(100vh - (69px + 24px * 4 + 17px));
 }
 
 .logo-wrapper {
@@ -33,6 +32,20 @@
     max-width: 50px;
     max-height: 50px;
 }
+
+.logo {
+    animation: App-logo-spin infinite 20s linear;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 .nav-link {
     color: #ffffff;

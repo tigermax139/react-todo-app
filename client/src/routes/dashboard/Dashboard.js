@@ -29,6 +29,19 @@ class Dashboard extends Component {
     this.props.clearTodosStorage();
   }
 
+  onPageChange(data) {
+    console.log(data);
+    this.setState(state => ({
+      params: {
+        ...state.params,
+        page: data.current,
+      }
+    }), () => {
+      console.log(this.state.params);
+      this.props.loadTodos(this.state.params)
+    });
+  }
+
   removeTodoHandler(id) {
     console.log(id);
     removeTodo(id).then(() => {
@@ -46,6 +59,12 @@ class Dashboard extends Component {
         <TodosTable todos={this.props.todos}
                     onRemove={c => this.removeTodoHandler(c)}
                     onEdit={this.editTodo}
+                    onPageChange={this.onPageChange.bind(this)}
+                    pagination={{
+                      current: this.state.params.page,
+                      pageSize: this.state.params.per_page,
+                      total: this.props.count
+                    }}
         />
       </div>
     );

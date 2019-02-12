@@ -10,10 +10,10 @@ const httpStatus = require('http-status');
 const expressValidation = require('express-validation');
 const cls = require('continuation-local-storage');
 const Sequelize = require('sequelize');
-const jwt = require('express-jwt');
 
 const config = require('./index');
 const binUserToContext = require('../middlewares/bindUserToContext');
+const jwtMiddleware = require('../middlewares/jwt');
 const routes = require('../routes');
 const APIError = require('../helpers/ApiError');
 
@@ -35,12 +35,7 @@ app.use(cookieParser(config.cookieSecret));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(logger);
-app.use(
-    jwt({
-        secret: config.JwtSecret,
-        credentialsRequired: true,
-    }).unless({path: ['/api/auth/login', '/api/auth/sing-up', '/api/auth/sign-up/confirm']})
-);
+jwtMiddleware(app);
 app.use(binUserToContext);
 app.use('/api', routes);
 

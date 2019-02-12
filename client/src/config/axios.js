@@ -2,6 +2,7 @@ import axios from 'axios';
 import config from './index';
 import { store } from '../index';
 import { logout } from "../actions/auth";
+import { routerActions } from "react-router-redux";
 
 class Api {
   constructor() {
@@ -35,7 +36,11 @@ class Api {
         if (error.response.status === 401) {
           if (this.token) {
             // token expired
-            store.dispatch(logout());
+            console.log('token expired');
+            this.logout().then(() => {
+              store.dispatch(logout());
+              store.dispatch(routerActions.push('/login'));
+            });
           }
           throw error;
         }
@@ -46,7 +51,7 @@ class Api {
     return localStorage.getItem('token');
   }
   static removeToken() {
-    return localStorage.setItem('token', null);
+    return localStorage.removeItem('token');
   }
   static setToken(token) {
     return localStorage.setItem('token', token);
@@ -54,6 +59,7 @@ class Api {
   async login({ login, password, keepInSystem }) {
     const res = await this.client.post('/auth/login', { login, password, keepInSystem });
     const { token, user } = res.data.data;
+    this.token = token;
     Api.setToken(token);
     return user;
   }
