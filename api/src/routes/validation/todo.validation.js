@@ -2,8 +2,8 @@ const Joi = require('joi');
 
 const create = {
     body: {
-        title: Joi.string().requried(),
-        status: Joi.string().optional(),
+        title: Joi.string().required(),
+        status: Joi.allow(['scheduled', 'in progress', 'done']),
     }
 };
 

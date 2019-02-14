@@ -7,7 +7,7 @@ import {
 } from 'antd';
 import './login.css';
 
-import { login } from '../../controllers/auth';
+import { login } from '../../../controllers/auth';
 
 class LoginForm extends Component {
   handleSubmit = evt  => {

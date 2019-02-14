@@ -3,6 +3,9 @@ const validate = require('express-validation');
 const { paramsId } = require('./validation/common.validation');
 const controller = require('../controllers/users.controller');
 
+Router.route('/me')
+    .get(controller.getSingleUser);
+
 Router.route('/:id')
     .get(validate(paramsId), controller.getSingleUser); // single info
 

@@ -1,6 +1,7 @@
+import { routerActions } from 'react-router-redux'
+import _ from 'lodash';
 import axios from '../config/axios';
 import * as authActions from '../actions/auth';
-import { routerActions } from 'react-router-redux'
 
 export const login = ({login, password, keepInSystem}) => async dispatch => {
   await dispatch(authActions.loginStart());
@@ -28,4 +29,18 @@ export const initialRenderTokenExist = () => dispatch => {
   dispatch(authActions.initialRenderTokenExist(!!exist));
 };
 
-export const isAuth = () => !!axios.token;
+export const initialRenderAuth = () => async dispatch => {
+  await dispatch(authActions.loginStart());
+  try {
+    const { data: axiosData } = await axios.client.get('/users/me');
+    const { user } = axiosData.data;
+    await dispatch(authActions.loginSuccess(user));
+  } catch (e) {
+    await logout()(dispatch);
+  }
+};
+
+export const isAuth = () => (dispatch, getState) => {
+  const { user } = getState().auth;
+  return !_.isEmpty(user);
+};

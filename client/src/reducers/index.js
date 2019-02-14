@@ -3,8 +3,9 @@ import { routerReducer } from 'react-router-redux';
 
 import auth from './auth';
 import todo from './todo';
+
 export default combineReducers({
-  routing: routerReducer,
+  router: routerReducer,
   auth,
   todoStore: todo,
-})
+});

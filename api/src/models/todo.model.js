@@ -14,9 +14,10 @@ module.exports = (sequelize, Sequelize) => {
             status: {
                 type: Sequelize.STRING,
                 defaultValue: 'scheduled',
-                validate: {
-                    isIn: ['scheduled', 'in progress', 'done']
-                }
+                // validate: {
+                //     isIn: ['scheduled', 'in progress', 'done']
+                // }
+                allowNull: true,
             }
         },
     );

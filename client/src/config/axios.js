@@ -1,8 +1,9 @@
 import axios from 'axios';
 import config from './index';
-import { store } from '../index';
+
+import { store } from '../index.js';
 import { logout } from "../actions/auth";
-import { routerActions } from "react-router-redux";
+
 
 class Api {
   constructor() {
@@ -39,7 +40,7 @@ class Api {
             console.log('token expired');
             this.logout().then(() => {
               store.dispatch(logout());
-              store.dispatch(routerActions.push('/login'));
+              // store.dispatch(routerActions.push('/login'));
             });
           }
           throw error;

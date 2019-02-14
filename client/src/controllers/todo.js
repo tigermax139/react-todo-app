@@ -24,4 +24,14 @@ export const removeTodo = async id => {
   }
 };
 
+export const createTodo = async params => {
+  const { data } = await axios.client.post('/todos', {...params});
+  return data;
+};
+
+export const updateTodo = async (id, params) => {
+  const { data } = await axios.client.put(`/todos/${id}`, {...params});
+  return data;
+};
+
 export const clearTodosStorage = () => dispatch => dispatch(actions.clearTodoStorage());

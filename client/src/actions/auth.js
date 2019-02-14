@@ -10,4 +10,6 @@ export const loginFailure = error => ({ type: actionTypes.LOGIN_FAILURE, error }
 
 export const logout = () => ({ type: actionTypes.LOGOUT });
 
+export const storeUser = user => ({ type: actionTypes.STORE_USER, payload: user });
+
 export const initialRenderTokenExist = exist => ({ type: actionTypes.INITIAL_RENDER_TOKEN_EXIST, payload: exist });

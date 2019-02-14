@@ -1,5 +1,5 @@
 import React from 'react';
-import SignUpForm from '../../components/SingUpForm';
+import SignUpForm from '../../components/Forms/SingUpForm';
 import { Col, Row, Card } from "antd";
 
 const SingUp = () => {

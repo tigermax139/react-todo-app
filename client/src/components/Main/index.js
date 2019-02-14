@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { Route, Switch, withRouter } from 'react-router';
+import { Switch } from 'react-router';
 import ProtectedRoute from '../ProtectedRoute';
+import UnAuthRoute from '../UnAuthRoute';
 import * as routes from '../../routes';
 
 const {
@@ -17,11 +18,20 @@ class Main extends Component {
       <Switch>
         <ProtectedRoute exact path={'/'} component={Dashboard}/>
         <ProtectedRoute path={'/user'} component={User}/>
-        <Route path={'/login'} component={Login}/>
-        <Route path={'/sing-up'} component={SignUp}/>
+        <UnAuthRoute path={'/login'} component={Login}/>
+        <UnAuthRoute path={'/sing-up'} component={SignUp}/>
         <ProtectedRoute path={'*'} component={NotFound}/>
       </Switch>
     );
+    // return (
+    //   <Switch>
+    //     <Route exact path={'/'} component={Dashboard}/>
+    //     <Route path={'/user'} component={User}/>
+    //     <Route path={'/login'} component={Login}/>
+    //     <Route path={'/sing-up'} component={SignUp}/>
+    //     <Route path={'*'} component={NotFound}/>
+    //   </Switch>
+    // );
   }
 }
 

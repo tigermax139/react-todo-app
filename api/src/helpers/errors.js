@@ -5,6 +5,8 @@ const NotFoundError = (msg = 'NOT FOUND') => new APIError(msg, httpStatus.NOT_FO
 
 const UnauthorizedError = (msg = 'UNAUTHORIZED') => new APIError(msg, httpStatus.UNAUTHORIZED, true);
 
+const ForbiddenError = (msg = 'FORBIDDEN') => new APIError(msg, httpStatus.FORBIDDEN, true);
+
 const AlreadyExist = (msg = 'ALREADY EXIST') => new APIError(msg, httpStatus.UNPROCESSABLE_ENTITY, true);
 
 module.exports = {

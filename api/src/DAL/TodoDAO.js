@@ -38,7 +38,7 @@ class TodoDAO {
         console.log('PAG', pagination);
         return await Todo.findAndCountAll({
             where: {},
-            // order: [...sort],
+            order: [['created_at', 'desc']],
             limit: pagination.limit,
             offset: pagination.offset,
         })
