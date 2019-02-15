@@ -4,12 +4,14 @@
 
 cd /api
 
+| `npm i`
 | `npm run start`
 
 ## run app
 
 cd ../client
 
+| `npm i`
 | `npm run start`
 
 credentials:
