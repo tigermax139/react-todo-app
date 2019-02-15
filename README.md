@@ -1,11 +1,13 @@
 # react-todo-app
 
-#run api
+## run api
+
 cd /api
 
 | `npm run start`
 
-##run app
+## run app
+
 cd ../client
 
 | `npm run start`
