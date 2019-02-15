@@ -7,12 +7,6 @@ const initialSate = {
   todos: [],
   count: 0,
   message: '',
-  removeTodo: {
-    isStarted: false,
-    isLoad: false,
-    isError: false,
-    ids: [],
-  }
 };
 
 export default (state = initialSate, action) => {

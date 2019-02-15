@@ -20,6 +20,7 @@ class Main extends Component {
         <ProtectedRoute path={'/user'} component={User}/>
         <UnAuthRoute path={'/login'} component={Login}/>
         <UnAuthRoute path={'/sing-up'} component={SignUp}/>
+        <ProtectedRoute path={'/404'} component={NotFound}/>
         <ProtectedRoute path={'*'} component={NotFound}/>
       </Switch>
     );

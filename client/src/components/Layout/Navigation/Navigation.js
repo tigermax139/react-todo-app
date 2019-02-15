@@ -33,6 +33,11 @@ class Navigation extends Component {
             <span> User Info</span>
             <Link to='/user'/>
           </Menu.Item>
+          <Menu.Item key="/404">
+            <Icon type="frown" />
+            <span> 404 Page </span>
+            <Link to='/404'/>
+          </Menu.Item>
           <Menu.Item onClick={this.props.logout}>
             <Icon type="logout" />
             <span> Logout </span>
