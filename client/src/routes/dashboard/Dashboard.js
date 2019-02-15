@@ -26,6 +26,7 @@ class Dashboard extends Component {
       params: {
         page: 1,
         per_page: 6,
+        sort: [],
       }
     };
   }
@@ -38,17 +39,27 @@ class Dashboard extends Component {
     this.props.clearTodosStorage();
   }
 
-  onPageChange(data) {
-    console.log(data);
+  onParamsChange(pagination, filter, sorter) {
     this.setState(state => ({
       params: {
         ...state.params,
-        page: data.current,
+        page: pagination.current,
+      ...(sorter.columnKey
+        ? {sort: _.uniqBy([[sorter.columnKey, sorter.order], ...(state.params.sort || [])], item => item[0])}
+        : {}
+        ),
       }
     }), () => {
-      console.log(this.state.params);
       this.props.loadTodos(this.state.params)
     });
+  }
+
+  clearSorter() {
+    this.setState({
+      params: {
+        page: 1,
+      }
+    }, () => this.props.loadTodos(this.state.params))
   }
 
   removeTodoHandler(id) {
@@ -125,8 +136,7 @@ class Dashboard extends Component {
     } finally {
       this.setState({
         editLoading: false,
-      })
-      console.log(2);
+      });
       this.editModalToggle(false);
     }
   }
@@ -136,6 +146,9 @@ class Dashboard extends Component {
       <div>
         <Button htmlType='button' style={{marginBottom: 15}} onClick={e => this.createModalToggle(true)}>
           Add new Todo
+        </Button>
+        <Button htmlType='button' style={{marginBottom: 15, marginLeft: 15}} onClick={e => this.clearSorter()}>
+          Clear Sorter
         </Button>
         <Modal visible={this.state.createModalVisible}
                title='Create your todo'
@@ -159,7 +172,8 @@ class Dashboard extends Component {
         <TodosTable todos={this.props.todos}
                     onRemove={c => this.removeTodoHandler(c)}
                     onEdit={this.editTodoClickHandler.bind(this)}
-                    onPageChange={this.onPageChange.bind(this)}
+                    onChange={this.onParamsChange.bind(this)}
+                    loading={this.props.isStarted}
                     pagination={{
                       current: this.state.params.page,
                       pageSize: this.state.params.per_page,

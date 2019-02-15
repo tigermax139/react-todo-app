@@ -35,10 +35,13 @@ class TodoDAO {
     }
     static async getTodosList(options) {
         const { pagination, sort, filter } = options;
+        console.log('------');
         console.log('PAG', pagination);
+        console.log('sort', sort);
+        console.log('------');
         return await Todo.findAndCountAll({
             where: {},
-            order: [['created_at', 'desc']],
+            order: sort,
             limit: pagination.limit,
             offset: pagination.offset,
         })

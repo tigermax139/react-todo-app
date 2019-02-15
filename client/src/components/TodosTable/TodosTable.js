@@ -5,12 +5,14 @@ import { Table, Tag, Button, Divider } from 'antd';
 import showConfirm from '../../components/DashboardModals/Remove';
 
 class TodosTable extends Component {
+
   onRemove(confirm, id) {
     if(!confirm) {
       return false;
     }
     this.props.onRemove(id);
   }
+
   render() {
     const source = this.props.todos;
     const columns = [
@@ -18,11 +20,15 @@ class TodosTable extends Component {
         title: 'ID',
         dataIndex: 'id',
         key: 'id',
+        sorter: true,
+        sortDirections: ['descend', 'ascend'],
       },
       {
         title: 'Title',
         dataIndex: 'title',
         key: 'title',
+        sorter: true,
+        sortDirections: ['descend', 'ascend'],
       },
       {
         title: 'Status',
@@ -40,13 +46,16 @@ class TodosTable extends Component {
               return <Tag color='green'>{status}</Tag>;
             }
           }
-        }
+        },
+        sorter: true,
+        sortDirections: ['descend', 'ascend'],
       },
       {
         title: 'Created At',
         dataIndex: 'created_at',
         key: 'created_at',
         render: date => moment(date).format('LTS'),
+        sortDirections: ['descend', 'ascend'],
       },
       {
         title: 'Actions',
@@ -60,7 +69,14 @@ class TodosTable extends Component {
         )
       }
     ];
-    return <Table pagination={this.props.pagination} onChange={this.props.onPageChange} columns={columns} dataSource={source}/>
+    return <Table
+      loading={this.props.loading}
+      pagination={this.props.pagination}
+      onChange={this.props.onChange}
+      columns={columns}
+      dataSource={source}
+      rowKey={record => record.id}
+    />
   }
 }
 
@@ -69,7 +85,8 @@ TodosTable.propTypes = {
   onEdit: PropTypes.func.isRequired,
   onRemove: PropTypes.func.isRequired,
   pagination: PropTypes.object.isRequired,
-  onPageChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default TodosTable;
