@@ -5,6 +5,7 @@
 cd /api
 
 | `npm i`
+
 | `npm run start`
 
 ## run app
@@ -12,6 +13,7 @@ cd /api
 cd ../client
 
 | `npm i`
+
 | `npm run start`
 
 credentials:
